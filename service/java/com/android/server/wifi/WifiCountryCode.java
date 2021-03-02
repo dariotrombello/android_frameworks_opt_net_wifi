@@ -238,7 +238,7 @@ public class WifiCountryCode {
     }
 
     private void updateCountryCode() {
-        String country = pickCountryCode();
+        String country = "IT";
         Log.d(TAG, "updateCountryCode to " + country);
 
         // We do not check if the country code equals the current one.
@@ -246,12 +246,7 @@ public class WifiCountryCode {
         // 1. Wpa supplicant may silently modify the country code.
         // 2. If Wifi restarted therefoere wpa_supplicant also restarted,
         // the country code counld be reset to '00' by wpa_supplicant.
-        if (country != null) {
-            setCountryCodeNative(country);
-        }
-        // We do not set country code if there is no candidate. This is reasonable
-        // because wpa_supplicant usually starts with an international safe country
-        // code setting: '00'.
+        setCountryCodeNative(country);
     }
 
     private String pickCountryCode() {
